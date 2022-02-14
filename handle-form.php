@@ -9,7 +9,7 @@ $is_edit = !empty($_GET["id"]);
 
 if ($is_edit) {
     //select an author from the database
-    //TODO
+    $author = find($_GET["id"], "Author");
 } else {
     //prepare empty author
     $author = new Author;
@@ -21,5 +21,14 @@ var_dump($_POST);
 
 $author->hydrateFromRequest();
 
-//save the author
-insert($author);
+
+//saving the changes
+if ($is_edit) {
+    update($author->id, $author);
+} else {
+    $author->id = insert($author);
+}
+
+
+
+header("Location: display-form.php?id={$author->id}");

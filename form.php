@@ -7,7 +7,7 @@
     <title>Author form</title>
 </head>
 <body>
-    <form action="handle-form.php" method="POST">
+    <form action="handle-form.php?=<?=$author->id?>" method="POST">
         <label for="name">Name</label>
         <input type="text" id="name" value="<?= $author->name ?>" name="name">
         <br>
@@ -18,6 +18,15 @@
         <br>
         <button>Save author</button>
 
+        <ul>
+            <?php foreach ($all_authors as $author) : ?>
+                <li>
+                    <?= $author->name ?>
+                    <a href="display-form.php?id=<?= $author->id ?>">EDIT</a>
+                </li>
+            <?php endforeach ; ?>
+        </ul>
+        <a href="display-form.php">Create a new author </a>
     </form>
 </body>
 </html>
