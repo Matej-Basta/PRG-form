@@ -7,7 +7,7 @@
     <title>Author form</title>
 </head>
 <body>
-    <form action="handle-form.php?=<?=$author->id?>" method="POST">
+    <form action="handle-form.php?id=<?=$author->id?>" method="POST">
         <label for="name">Name</label>
         <input type="text" id="name" value="<?= $author->name ?>" name="name">
         <br>
